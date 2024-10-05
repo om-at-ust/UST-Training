@@ -3,7 +3,6 @@ package com.UST.ProjectInfo.service;
 import com.UST.ProjectInfo.Entity.Project;
 import com.UST.ProjectInfo.dto.ProjectDto;
 import com.UST.ProjectInfo.repository.ProjectRepository;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,7 @@ public class ProjectService {
     }
 
     public List<Project> getProjectByCode(Long employeeId) {
-        return projectRepository.findByCcCode(employeeId);
+        return projectRepository.findAllByCcCode(employeeId);
     }
     public List<Project> getAllProjects() {
         return projectRepository.findAll();

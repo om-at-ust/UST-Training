@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -20,7 +22,7 @@ public class EmployeeController {
     public Employee addEmployee(Employee employee){
         return employeeService.addEmployee(employee);
     }
-    @GetMapping("withProjects/{ccCode}")
+    @GetMapping("/withProjects/{ccCode}")
     public ResponseEntity<FullResponse> getEmployeeByProjectCode(@PathVariable Long ccCode){
         return new ResponseEntity<>(employeeService.getEmployeeByProjectCode(ccCode),HttpStatus.OK);
     }

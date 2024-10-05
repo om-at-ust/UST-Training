@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProjectDto {
 
-    private long projectId;
 
     @NotNull(message="Project name cannot be null")
     private String projectName;

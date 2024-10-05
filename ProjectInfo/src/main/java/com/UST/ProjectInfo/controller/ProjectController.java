@@ -8,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/project")
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
@@ -19,8 +21,8 @@ public class ProjectController {
     }
 
     @GetMapping("/project/{ccode}")
-    public ResponseEntity<?> getProjectByCode(@PathVariable Long ccode){
-        return new ResponseEntity<>(projectService.getProjectByCode(ccode),HttpStatus.OK);
+    public List<Project> getProjectByCode(@PathVariable Long ccode){
+        return projectService.getProjectByCode(ccode);
     }
 
 }
