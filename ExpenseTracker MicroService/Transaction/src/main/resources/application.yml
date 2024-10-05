@@ -1,11 +1,19 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   application:
     name: Transaction
-    datasource:
-      url: jdbc:mysql://localhost:3306/TransactionDB
-      username: root
-      password: pass@word1
-      driver-class-name: com.mysql.cj.jdbc.driver
+  datasource:
+    url: jdbc:mysql://localhost:3306/transactiondb
+    username: root
+    password: pass@word1
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
+
+
+server:
+  port: 8081
 
 
