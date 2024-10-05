@@ -1,10 +1,10 @@
-package com.UST.expense.tracker;
+package com.UST.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExpenseTrackerApplicationTests {
+class UserApplicationTests {
 
 	@Test
 	void contextLoads() {
