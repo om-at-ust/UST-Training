@@ -1,17 +1,19 @@
-package com.UST.Transaction.dto;
-
+package com.UST.user.client;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionDto {
-    @Pattern(regexp = "^(CREDIT|DEBIT)$", message = "Invalid Type of payment")
+public class Transaction {
+    private long transactionId;
     private String typeOfPayment;
     private int amount;
-    private long accountNumber; //fk
+    private LocalDate date;
+    private long accountNumber;
 }
