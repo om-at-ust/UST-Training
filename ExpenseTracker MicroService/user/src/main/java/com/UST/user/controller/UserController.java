@@ -3,6 +3,7 @@ package com.UST.user.controller;
 
 import com.UST.user.client.FullResponse;
 import com.UST.user.client.Transaction;
+import com.UST.user.dto.TransactionSummary;
 import com.UST.user.entity.User;
 import com.UST.user.service.UserService;
 import feign.Response;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @RestController
@@ -46,8 +49,20 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
     @PutMapping("/updateUserBalance/{accountNumber}")
-    public ResponseEntity<User> updateUserBalance(@PathVariable Long accountNumber, @RequestBody User user){
-        User updatedUser = userService.updateUserBalance(accountNumber,user);
+    public ResponseEntity<User> updateUserBalance(@PathVariable Long accountNumber, @RequestBody double balance){
+        User updatedUser = userService.updateUserBalance(accountNumber,balance);
         return ResponseEntity.ok(updatedUser);
+    }
+    @GetMapping("summary/{date}/{accountNumber}")
+    public ResponseEntity<String> getTransactionSummary(@PathVariable Long accountNumber, @PathVariable LocalDate date){
+        TransactionSummary transactionSummary = userService.getTransactionSummary(accountNumber, date);
+        String name = userService.getUserByAccountNumber(accountNumber).getUserName();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Hello ").append(name).append(",\n");
+        sb.append("Expense Summary of account No: ").append(accountNumber).append(" \nfor the month of: ").append(Month.from(date)).append("\n");
+        sb.append("Total Expenses: ").append(transactionSummary.getExpenses()).append("\n");
+        sb.append("Total Income: ").append(transactionSummary.getIncome()).append("\n");
+        sb.append("Current Balance: ").append(transactionSummary.getCurrentBalance()).append("\n");
+        return ResponseEntity.ok(sb.toString());
     }
 }

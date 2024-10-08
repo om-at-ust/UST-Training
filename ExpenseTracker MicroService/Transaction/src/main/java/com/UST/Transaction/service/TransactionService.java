@@ -28,7 +28,7 @@ public class TransactionService {
         }else
             balance = balance - transaction.getAmount();
         user.setBalance(balance);
-        client.updateUserBalance(transaction.getAccountNumber(), user);
+        client.updateUserBalance(transaction.getAccountNumber(), balance);
 
         Transaction trans1 = new Transaction();
         trans1.setTypeOfPayment(transaction.getTypeOfPayment());

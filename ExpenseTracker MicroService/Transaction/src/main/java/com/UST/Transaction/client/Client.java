@@ -13,5 +13,5 @@ public interface Client {
     @GetMapping("/getByAccountNumber/{accountNumber}")
     public ResponseEntity<User> getUserByAccountNumber(@PathVariable Long accountNumber);
     @PutMapping("/updateUserBalance/{accountNumber}")
-    public ResponseEntity<User> updateUserBalance(@PathVariable Long accountNumber, @RequestBody User user);
+    public ResponseEntity<User> updateUserBalance(@PathVariable Long accountNumber, @RequestBody double balance);
 }
