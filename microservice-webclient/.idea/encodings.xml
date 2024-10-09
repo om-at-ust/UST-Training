@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Airline/Airline/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AirlinesServices/AirlinesServices/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Cloud-config/Cloud-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Flight-services/Flight-services/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Passangerinfo/Passangerinfo/src/main/java" charset="UTF-8" />
+  </component>
+</project>
