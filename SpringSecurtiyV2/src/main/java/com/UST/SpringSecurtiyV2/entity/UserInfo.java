@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.List;
 
 @Document(collection = "userInfo")
 @Data
@@ -17,6 +20,6 @@ public class UserInfo {
     private String name;
     private String email;
     private String password;
-    private String roles;
+    private List<GrantedAuthority> authoritiesList;
 
 }

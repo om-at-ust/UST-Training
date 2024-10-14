@@ -12,14 +12,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
+//http://localhost:9095/api/v1/
 public class UserController {
     @Autowired
     private UserInfoService userInfoService;
@@ -28,6 +27,10 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @GetMapping
+    public String index() {
+        return "Welcome to index page";
+    }
 //    @GetMapping("/home")
 //    @PreAuthorize("hasRole(`USER`)")
 //    public String home(HttpServletRequest request){
