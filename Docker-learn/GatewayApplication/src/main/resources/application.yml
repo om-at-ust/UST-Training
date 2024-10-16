@@ -1,0 +1,32 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver-sr:8761/eureka/
+server:
+  port: 8222
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: projectinfo
+          uri: http://projectinfo-sr:2238
+          predicates:
+            - Path=/project/**
+          filters:
+            - AuthenticationFilter
+        - id: employeeinfo
+          uri: http://employeeinfo-sr:9092
+          predicates:
+            - Path=/employee/**
+          filters:
+            - AuthenticationFilter
+        - id: springsecurity
+          uri: http://springsecurity-sr:8082
+          predicates:
+            - Path=/**
+

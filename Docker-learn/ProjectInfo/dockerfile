@@ -1,0 +1,3 @@
+FROM amazoncorretto:23
+COPY ./target/ProjectInfoV3-0.0.1-SNAPSHOT.jar ProjectInfoV3.jar
+CMD ["java","-jar","ProjectInfoV3.jar"]

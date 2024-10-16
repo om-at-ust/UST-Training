@@ -1,0 +1,74 @@
+version: "3"
+services:
+  projectinfo-sr:
+    image: project-info-service
+    build: ./ProjectInfo
+    ports:
+      - "2238:2238"
+    networks:
+      - app-network
+    depends_on:
+      - employeeinfo-sr
+      - gatewayapplication-sr
+      - springsecurity-sr
+
+
+  employeeinfo-sr:
+    image: employee-info-service
+    build: ./EmployeeInfo
+    ports:
+      - "9092:9092"
+    networks:
+      - app-network
+    depends_on:
+      - eurekaserver-sr
+      - gatewayapplication-sr
+      - springsecurity-sr
+
+  springsecurity-sr:
+    image: spring-security-server
+    build: ./SpringsecurityV3
+    ports:
+      - "8082:8082"
+    networks:
+      - app-network
+    depends_on:
+      - eurekaserver-sr
+      - GatewayApplication
+
+  gatewayapplication-sr:
+    image: api-gateway
+    build: ./GatewayApplication
+    ports:
+      - "8222:8222"
+    networks:
+      - app-network
+    depends_on:
+      - eurekaserver-sr
+
+  eurekaserver-sr:
+    image: eureka-service
+    build: ./EurekaServer
+    ports:
+      - "8761:8761"
+    networks:
+      - app-network
+
+#  mysqldb-employee:
+#     image: mysql:8
+#     networks:
+#       - app-network
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=root
+#       - MYSQL_DATABASE=employeedb
+#  mysqldb-project:
+#    image: mysql:8
+#    networks:
+#      - app-network
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+#      - MYSQL_DATABASE=projectdb
+
+
+networks:
+  app-network:
